@@ -9,21 +9,21 @@ class Solution {
     vector<int> bfsOfGraph(int V, vector<int> adj[]) {
         // Code here
         int vis[V]={0};
-        vis[0]=1;
         queue<int> q;
         q.push(0);
+        vis[0]=1;
         vector<int> ans;
         while(!q.empty())
         {
-            int u=q.front();
+            int temp =q.front();
             q.pop();
-            ans.push_back(u);
-            for(auto it:adj[u])
+            ans.push_back(temp);
+            for(auto x:adj[temp])
             {
-                if(!vis[it])
+                if(!vis[x])
                 {
-                    vis[it]=1;
-                    q.push(it);
+                    vis[x]=1;
+                    q.push(x);
                 }
             }
         }
