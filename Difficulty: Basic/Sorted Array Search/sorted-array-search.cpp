@@ -8,18 +8,15 @@ class Solution {
   public:
     // Function to find element in sorted array
     // arr: input array
-    // N: size of array
-    // K: element to be searched
-    int searchInSorted(int arr[], int N, int K) {
+    // k: element to be searched
+    bool searchInSorted(vector<int>& arr, int k) {
 
         // Your code here
-   
-        for(int i=0;i<N;i++)
+        for(int i=0;i<arr.size();i++)
         {
-            if(arr[i]==K)return 1;
-          
+            if(arr[i]==k)return true;
         }
-        return -1;
+        return false;
     }
 };
 
@@ -29,18 +26,24 @@ int main(void) {
 
     int t;
     cin >> t;
+    cin.ignore();
     while (t--) {
-        int n, k;
-        cin >> n >> k;
 
-        int arr[n];
-
-        for (int i = 0; i < n; i++) {
-            cin >> arr[i];
+        vector<int> arr;
+        string input;
+        getline(cin, input);
+        stringstream ss(input);
+        int number;
+        while (ss >> number) {
+            arr.push_back(number);
         }
 
+        int k;
+        cin >> k;
+        cin.ignore();
         Solution ob;
-        cout << ob.searchInSorted(arr, n, k) << endl;
+        cout << (ob.searchInSorted(arr, k) ? "true" : "false") << endl;
+        cout << "~" << endl;
     }
 
     return 0;
